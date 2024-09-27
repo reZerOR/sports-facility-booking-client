@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, useInView } from "framer-motion";
+import { useRef } from "react";
  
 type FadeTextProps = {
   className?: string;
@@ -43,12 +44,15 @@ export function FadeText({
       },
     };
   }, [directionOffset, axis, framerProps]);
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
  
   return (
     <motion.div
+      ref={ref}
       initial="hidden"
-      animate="show"
-      viewport={{ once: true }}
+      animate={isInView ? "show" : "hidden"}
       variants={FADE_ANIMATION_VARIANTS}
     >
       <motion.span className={className}>{text}</motion.span>
