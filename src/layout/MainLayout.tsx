@@ -1,3 +1,4 @@
+import { ComprehensiveFooter } from "@/components/comprehensive-footer";
 import Navbar from "@/components/custom/Navbar";
 import { Outlet } from "react-router-dom";
 const MainLayout = () => {
@@ -5,6 +6,7 @@ const MainLayout = () => {
     <div>
       <Navbar />
       <Outlet />
+      <ComprehensiveFooter />
     </div>
   );
 };

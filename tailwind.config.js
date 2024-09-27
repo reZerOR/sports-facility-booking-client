@@ -1,8 +1,19 @@
+import fluid, { extract, screens, fontSize } from "fluid-tailwind";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: {
+    files: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    extract,
+  },
   theme: {
+    /** @type {import('fluid-tailwind').FluidThemeConfig} */
+    fluid: ({ theme }) => ({
+      defaultScreens: ["20rem", theme("screens.lg")],
+    }),
+    screens,
+    fontSize,
     extend: {
       borderRadius: {
         lg: "var(--radius)",
@@ -10,7 +21,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        primary1: "#FF6F00",
+        primary1: "#F79050",
         primaryLight: "#ff8c33",
         primaryDark: "#cc5900",
         secondary1: "#1E1F26",
@@ -58,7 +69,16 @@ export default {
           5: "hsl(var(--chart-5))",
         },
       },
+      fontFamily: {
+        raleway: ["Raleway", "sans-serif"],
+        nunito: ["Nunito Sans", "sans-serif"],
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    fluid({
+      checkSC144: false, // default: true
+    }),
+    require("tailwindcss-animate"),
+  ],
 };
