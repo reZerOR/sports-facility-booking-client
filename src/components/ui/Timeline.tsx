@@ -33,7 +33,7 @@ import { FadeText } from "./FadeText";
    
     return (
       <div
-        className="container mx-auto flex justify-between relative my-10 flex-col xl:flex-row bg-white dark:bg-neutral-950 font-sans"
+        className="container mx-auto flex justify-between relative my-20 flex-col xl:flex-row bg-white dark:bg-neutral-950 font-sans"
         ref={containerRef}
       >
         <div className="mx-auto">
@@ -53,7 +53,7 @@ import { FadeText } from "./FadeText";
         </div>
    
         <div ref={ref} className="relative bg-orange-100
-         max-w-xl pb-20 rounded-xl">
+         max-w-xl pb-20 mx-auto rounded-xl">
           {data.map((item, index) => (
             <div
               key={index}

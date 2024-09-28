@@ -1,4 +1,5 @@
 import fluid, { extract, screens, fontSize } from "fluid-tailwind";
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -73,6 +74,17 @@ export default {
         raleway: ["Raleway", "sans-serif"],
         nunito: ["Nunito Sans", "sans-serif"],
       },
+      keyframes: {
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
+      },
+      animation: {
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+      },
     },
   },
   plugins: [
@@ -80,5 +92,17 @@ export default {
       checkSC144: false, // default: true
     }),
     require("tailwindcss-animate"),
+    addVariablesForColors,
   ],
 };
+
+function addVariablesForColors({ addBase, theme }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}
