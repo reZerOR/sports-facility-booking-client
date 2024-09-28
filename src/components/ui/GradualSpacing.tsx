@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, Variants } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -21,17 +21,15 @@ export function GradualSpacing({
   },
   className,
 }: GradualSpacingProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const element = document.getElementById("gradual-spacing");
-      if (element) {
-        const rect = element.getBoundingClientRect();
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
         if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
+          setHasAnimated(true);
         }
       }
     };
@@ -45,23 +43,20 @@ export function GradualSpacing({
   }, []);
 
   return (
-    <div id="gradual-spacing" className="flex justify-center">
-      <AnimatePresence>
-        {isVisible &&
-          text.split("").map((char, i) => (
-            <motion.h1
-              key={i}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={framerProps}
-              transition={{ duration, delay: i * delayMultiple }}
-              className={cn("drop-shadow-sm ", className)}
-            >
-              {char === " " ? <span>&nbsp;</span> : char}
-            </motion.h1>
-          ))}
-      </AnimatePresence>
+    <div ref={ref} className="flex justify-center">
+      {hasAnimated &&
+        text.split("").map((char, i) => (
+          <motion.h1
+            key={i}
+            initial="hidden"
+            animate="visible"
+            variants={framerProps}
+            transition={{ duration, delay: i * delayMultiple }}
+            className={cn("drop-shadow-sm ", className)}
+          >
+            {char === " " ? <span>&nbsp;</span> : char}
+          </motion.h1>
+        ))}
     </div>
   );
 }

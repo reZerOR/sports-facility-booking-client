@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { MoveLeft, MoveRight, Star } from "lucide-react";
 import Heading from "../ui/Heading";
 import { FadeText } from "../ui/FadeText";
+import { container } from "@/lib/style";
 
 const Categories = () => {
   const reviews = [
@@ -106,9 +107,9 @@ const Categories = () => {
     }
   }, [api]);
   return (
-    <div className="my-20">
+    <div className={container}>
       <Heading text="User Voices" />
-      <div className={`container mx-auto px-4`}>
+      <div>
         <Carousel
           setApi={setApi}
           opts={{

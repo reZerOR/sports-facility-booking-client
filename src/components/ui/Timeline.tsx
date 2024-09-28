@@ -37,7 +37,7 @@ import { FadeText } from "./FadeText";
         ref={containerRef}
       >
         <div className="mx-auto">
-          <h2 className="~/xl:~text-3xl/6xl sticky top-20 mb-10 font-black font-raleway text-center text-primary1">
+          <h2 className="~/xl:~text-4xl/6xl sticky top-20 mb-10 font-black font-raleway text-center text-primary1">
             <FadeText 
             direction="up"
             text="How it works"
