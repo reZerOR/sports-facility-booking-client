@@ -13,6 +13,10 @@ const menu = [
     name: "Manage",
     to: "/manage",
   },
+  {
+    name: "About",
+    to: "/about",
+  },
 ];
 
 const Navbar = () => {

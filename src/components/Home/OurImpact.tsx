@@ -27,7 +27,7 @@ export default function UniqueBentoGridStats() {
           <div className=" group col-span-1 relative bg-white rounded-3xl shadow-lg p-6 flex flex-col items-center justify-center text-center">
             <Users className="size-32 group-hover:size-36 transition-all duration-300 text-primary1/20 absolute" />
             <h3 className="text-2xl sm:text-3xl font-bold text-orange-800">
-              <NumberTicker value={50000}/>+
+              <NumberTicker value={1000}/>+
             </h3>
             <p className="text-orange-600 mt-2">Active Users</p>
           </div>
@@ -36,7 +36,7 @@ export default function UniqueBentoGridStats() {
           <div className="bg-white group relative rounded-3xl shadow-lg p-6 flex flex-col items-center justify-center text-center">
             <Building2 className="size-32 group-hover:size-36 transition-all duration-300 text-primary1/20 absolute" />
             <h3 className="text-2xl sm:text-3xl font-bold text-orange-800">
-              1,000+
+              <NumberTicker value={1000}/>+
             </h3>
             <p className="text-orange-600 mt-2">Facilities</p>
           </div>
@@ -45,7 +45,7 @@ export default function UniqueBentoGridStats() {
           <div className="bg-white group relative rounded-3xl shadow-lg p-6 flex flex-col items-center justify-center text-center">
             <Star className="size-32 group-hover:size-36 transition-all duration-300 text-primary1/20 absolute" />
             <h3 className="text-2xl sm:text-3xl font-bold text-orange-800">
-              4.8/5
+              <NumberTicker value={4.8} decimalPlaces={1}/>/5
             </h3>
             <p className="text-orange-600 mt-2">Avg. Rating</p>
           </div>
@@ -54,7 +54,7 @@ export default function UniqueBentoGridStats() {
           <div className="col-span-1 lg:col-span-2 group relative bg-white rounded-3xl shadow-lg p-6 flex flex-col items-center justify-center text-center">
             <TrendingUp className="size-32 group-hover:size-36 transition-all duration-300 text-primary1/20 absolute" />
             <h3 className="text-2xl sm:text-3xl font-bold text-orange-800">
-              15%
+              <NumberTicker value={15}/>%
             </h3>
             <p className="text-orange-600 mt-2">Monthly Growth</p>
           </div>
@@ -63,7 +63,7 @@ export default function UniqueBentoGridStats() {
           <div className="bg-white group relative rounded-3xl shadow-lg p-6 flex flex-col items-center justify-center text-center">
             <Trophy className="size-32 group-hover:size-36 transition-all duration-300 text-primary1/20 absolute" />
             <h3 className="text-2xl sm:text-3xl font-bold text-orange-800">
-              20+
+              <NumberTicker value={20}/>+
             </h3>
             <p className="text-orange-600 mt-2">Sports Covered</p>
           </div>
@@ -71,7 +71,9 @@ export default function UniqueBentoGridStats() {
           {/* Cities Served */}
           <div className="col-span-1 md:col-span-2 group relative lg:col-span-3 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl shadow-lg p-6 flex flex-col items-center justify-center text-center text-white">
             <MapPin className="size-32 group-hover:size-36 transition-all duration-300 text-white/20 absolute" />
-            <h3 className="text-4xl sm:text-5xl font-bold">50+</h3>
+            <h3 className="text-4xl sm:text-5xl font-bold">
+              <NumberTicker value={50}/>+
+            </h3>
             <p className="text-xl mt-2">Cities Served</p>
           </div>
         </div>
