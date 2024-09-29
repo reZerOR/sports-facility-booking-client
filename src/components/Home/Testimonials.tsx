@@ -150,7 +150,7 @@ const Categories = () => {
                               }}
                             />
                           </h3>
-                          <p className="text-orange-600 text-sm">
+                          <div className="text-orange-600 text-sm">
                             <FadeText
                               direction="up"
                               text={review.facility}
@@ -162,7 +162,7 @@ const Categories = () => {
                                 },
                               }}
                             />
-                          </p>
+                          </div>
                         </div>
                       </div>
                       <div className="flex mb-2">
@@ -177,7 +177,7 @@ const Categories = () => {
                           />
                         ))}
                       </div>
-                      <p className="text-gray-600">
+                      <div className="text-gray-600">
                         <FadeText
                           direction="up"
                           text={review.comment}
@@ -189,7 +189,7 @@ const Categories = () => {
                             },
                           }}
                         />
-                      </p>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>

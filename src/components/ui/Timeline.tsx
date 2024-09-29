@@ -79,7 +79,7 @@ import { FadeText } from "./FadeText";
                     }}
                   />
                 </h3>
-                <p>
+                <div>
                   <FadeText
                   direction="right"
                     text={(item.content) as string}
@@ -91,7 +91,7 @@ import { FadeText } from "./FadeText";
                       },
                     }}
                   />
-                </p>
+                </div>
               </div>
             </div>
           ))}

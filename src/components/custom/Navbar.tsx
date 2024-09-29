@@ -3,6 +3,8 @@ import logo from "@/assets/playpalsolo.svg";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { MenuIcon} from "lucide-react";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { logout, useCurrentUser } from "@/redux/Features/auth/authSlice";
 
 const menu = [
   {
@@ -20,6 +22,9 @@ const menu = [
 ];
 
 const Navbar = () => {
+  const user = useAppSelector(useCurrentUser);
+  const dispatch = useAppDispatch();
+  console.log(user);
   const navlinks = menu.map((item, idx) => (
     <NavLink
       key={idx}
@@ -52,7 +57,11 @@ const Navbar = () => {
         <div className="flex items-center gap-6" id="navbar-default">
           <div className="md:flex items-center hidden gap-2 font-medium">
             {navlinks}
+
           </div>
+          {user && (
+              <Button onClick={() => dispatch(logout())} variant="secondary" className="bg-primaryDark hover:bg-primary1 text-white font-bold">Logout</Button>
+            )}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="secondary" size="icon" className="md:hidden bg-primary1">

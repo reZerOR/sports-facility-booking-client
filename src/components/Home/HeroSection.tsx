@@ -40,7 +40,7 @@ const HeroSection = () => {
               }}
             />
           </h1>
-          <p className="text-sm max-w-96 text-center text-white">
+          <div className="text-sm max-w-96 text-center text-white">
             <FadeText
               direction="up"
               text="From soccer fields to tennis courts, find the best places to play your favorite sports. Our user reviews ensure you know exactly what to expect before you book!"
@@ -52,7 +52,7 @@ const HeroSection = () => {
                 },
               }}
             />
-          </p>
+          </div>
           <div className="flex items-center gap-6 mt-4 text-primary1">
             <motion.div
               {...fadeInAnimation(2)}
