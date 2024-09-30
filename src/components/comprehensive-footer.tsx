@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/playpalhorizontal.svg";
+import { Linkedin } from "lucide-react";
+import { InstagramLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 
 export function ComprehensiveFooter() {
   const currentYear = new Date().getFullYear();
@@ -55,8 +57,36 @@ export function ComprehensiveFooter() {
               <p>Bangladesh</p>
             </address>
           </div>
-          <div className="w-full md:w-auto text-sm">
-            <p>&copy; {currentYear} PlayPal. All rights reserved.</p>
+          <div className="flex flex-col-reverse gap-2 items-center">
+            <div className="w-full md:w-auto text-sm">
+              <p>&copy; {currentYear} PlayPal. All rights reserved.</p>
+            </div>
+            <div className="w-full md:w-auto mt-4 md:mt-0 flex gap-4">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-orange-600 transition-colors"
+              >
+                <TwitterLogoIcon width={24} height={24} />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-orange-600 transition-colors"
+              >
+                <InstagramLogoIcon width={24} height={24} />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-orange-600 transition-colors"
+              >
+                <Linkedin width={24} height={24} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

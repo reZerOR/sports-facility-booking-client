@@ -6,6 +6,8 @@ import Login from "@/pages/Login";
 import ProtectRoutes from "./ProtectRoutes";
 import { DashboardLayout } from "@/layout/DashboardLayout";
 
+import Facility from "@/pages/Facility";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "facility",
+        element: <Facility />,
       },
     ],
   },

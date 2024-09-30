@@ -10,7 +10,7 @@ export interface SignupRequestBody {
   address: string;
 }
 
-interface CommonResponse {
+export interface CommonResponse {
   success: boolean;
   statusCode: number;
   message: string;

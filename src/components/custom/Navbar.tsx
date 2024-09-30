@@ -8,12 +8,8 @@ import { logout, useCurrentUser } from "@/redux/Features/auth/authSlice";
 
 const menu = [
   {
-    name: "Products",
-    to: "/",
-  },
-  {
-    name: "Manage",
-    to: "/manage",
+    name: "Facility",
+    to: "/facility",
   },
   {
     name: "About",
@@ -41,6 +37,24 @@ const Navbar = () => {
       {item.name}
     </NavLink>
   ));
+
+  if (user) {
+    navlinks.push(
+      <NavLink
+        key="dashboard"
+        to="/dashboard"
+        className={({ isActive }) =>
+          `${
+            isActive
+              ? "py-1 px-3 bg-primary1 text-white rounded-full"
+              : "text-black hover:bg-orange-200 py-1 px-3 rounded-full transition-all duration-300 ease-in-out hover:scale-105"
+          } font-medium`
+        }
+      >
+        Dashboard
+      </NavLink>
+    );
+  }
 
   const loginLogout = user ? (
     <Button
