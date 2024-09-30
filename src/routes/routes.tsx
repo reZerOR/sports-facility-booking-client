@@ -30,7 +30,11 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: 'dashboard',
-    element: <DashboardLayout />
-  }
+    path: "dashboard",
+    element: (
+      <ProtectRoutes>
+        <DashboardLayout />
+      </ProtectRoutes>
+    ),
+  },
 ]);

@@ -1,8 +1,8 @@
 import { useState, Dispatch, SetStateAction } from "react";
 import { motion } from "framer-motion";
-import {ChevronsRight,  Home, LucideIcon, CalendarCheck } from "lucide-react";
+import { ChevronsRight, Home, LucideIcon, CalendarCheck } from "lucide-react";
 import logo from "@/assets/playpalsolo.svg";
-import { useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 export const DashboardLayout = () => {
   return (
@@ -58,12 +58,16 @@ interface OptionProps {
   notifs?: number;
 }
 
-const Option = ({ Icon, title, path, selected, open, notifs}: OptionProps) => {
+const Option = ({ Icon, title, path, selected, open, notifs }: OptionProps) => {
   return (
     <motion.button
       layout
       // onClick={}
-      className={`relative flex h-10 w-full items-center rounded-md transition-colors ${selected === path ? "bg-primary1/10 text-primary1" : "text-slate-500 hover:bg-slate-100"}`}
+      className={`relative flex h-10 w-full items-center rounded-md transition-colors ${
+        selected === path
+          ? "bg-primary1/10 text-primary1"
+          : "text-slate-500 hover:bg-slate-100"
+      }`}
     >
       <motion.div
         layout
@@ -118,7 +122,9 @@ const TitleSection = ({ open }: TitleSectionProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.125 }}
             >
-              <span className="block text-xs text-primary1 font-semibold">PlayPal</span>
+              <span className="block text-xs text-primary1 font-semibold">
+                PlayPal
+              </span>
             </motion.div>
           )}
         </div>
@@ -129,11 +135,10 @@ const TitleSection = ({ open }: TitleSectionProps) => {
 
 const Logo = () => {
   return (
-    <motion.div
-      layout
-      className=""
-    >
-      <img src={logo} alt="logo" className="h-7 w-auto" />
+    <motion.div layout className="">
+      <Link to="/">
+        <img src={logo} alt="logo" className="h-7 w-auto" />
+      </Link>
     </motion.div>
   );
 };
@@ -175,4 +180,8 @@ const ToggleClose = ({ open, setOpen }: ToggleCloseProps) => {
   );
 };
 
-const ExampleContent = () => <div className="h-[200vh] w-full"></div>;
+const ExampleContent = () => (
+  <div className="h-[200vh] w-full">
+    <Outlet />
+  </div>
+);
