@@ -4,6 +4,7 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Login from "@/pages/Login";
 import ProtectRoutes from "./ProtectRoutes";
+import { DashboardLayout } from "@/layout/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -28,4 +29,8 @@ export const router = createBrowserRouter([
       </ProtectRoutes>
     ),
   },
+  {
+    path: 'dashboard',
+    element: <DashboardLayout />
+  }
 ]);
