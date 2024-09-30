@@ -17,7 +17,6 @@ const ProtectRoutes = ({ children }: ProtectRoutesProps) => {
     if(location.pathname.startsWith("/dashboard")){
       return <Navigate to="/login" />;
     }
-    return <Navigate to="/login" state={{ from: location }} />;
   }else{
     if(userNotAllowed.includes(location.pathname)){
       return <Navigate to="/" />;
