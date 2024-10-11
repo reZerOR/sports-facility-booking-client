@@ -2,8 +2,48 @@ import { Clock, Edit, MapPin, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Link, useLocation } from "react-router-dom";
-import { TFacility } from "@/redux/Features/facility/facilityApi";
-import { useState } from "react";
+import {
+  TFacility,
+  useDeleteFacilityMutation,
+} from "@/redux/Features/facility/facilityApi";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./alert-dialog";
+import { toast } from "sonner";
+const DeleteConfirmation = ({
+  handleDelete,
+  id,
+}: {
+  handleDelete: (arg0: string) => void;
+  id: string;
+}) => (
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete the facility
+        and remove its data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction
+        onClick={() => handleDelete(id)}
+        className="bg-red-500 hover:bg-red-600"
+      >
+        Delete
+      </AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+);
 
 export default function FacilityCard({
   _id,
@@ -13,16 +53,24 @@ export default function FacilityCard({
   description,
   location,
 }: TFacility) {
-  const [open, setOpen] = useState(false);
   const pathLoacation = useLocation();
   const isAdminFacilityRoute = pathLoacation.pathname.startsWith(
     "/dashboard/facilities"
-    );
+  );
+  const [deleteFacility] = useDeleteFacilityMutation();
 
-  
-  
-  const updateDialogue = () => {
-    setOpen(true);
+  const handleDelete = async (id: string) => {
+    try {
+      const res = await deleteFacility(id).unwrap();
+      if (res.success) {
+        toast.success("facility deleted successfully");
+      } else {
+        toast.warning(`${res.message}`);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.warning("Something went wrong please try again");
+    }
   };
   return (
     <div className="bg-primary1/10 overflow-hidden h-full rounded-xl flex flex-col justify-between">
@@ -51,14 +99,21 @@ export default function FacilityCard({
       <div className="p-4">
         {isAdminFacilityRoute ? (
           <div className="flex flex-row gap-2">
-            <Button onClick={updateDialogue} className="w-full bg-orange-500 hover:bg-orange-600 text-white">
+            <Button
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white"
+            >
               <Edit className="w-4 h-4 mr-2" />
               Edit
             </Button>
-            <Button className="w-full bg-red-500 hover:bg-red-600 text-white">
-              <Trash2 className="w-4 h-4 mr-2" />
-              Delete
-            </Button>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button className="w-full bg-red-500 hover:bg-red-600 text-white">
+                  <Trash2 className="w-4 h-4 mr-2" />
+                  Delete
+                </Button>
+              </AlertDialogTrigger>
+              <DeleteConfirmation handleDelete={handleDelete} id={_id} />
+            </AlertDialog>
           </div>
         ) : (
           <Link to={`/facility/${_id}`}>
