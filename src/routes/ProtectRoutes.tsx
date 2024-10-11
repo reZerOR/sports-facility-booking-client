@@ -11,14 +11,15 @@ const ProtectRoutes = ({ children }: ProtectRoutesProps) => {
   const user = useAppSelector(useCurrentUser);
   const location = useLocation();
   console.log("Current Route:", location.pathname);
-  const userNotAllowed = ["/login"];
+  const userNotAllowed = ["/login", '/dashboard/add-admin', '/dashboard/facilities'];
+  const isUserRole = user?.role === 'user'
 
   if (!user) {
     if(location.pathname.startsWith("/dashboard")){
       return <Navigate to="/login" />;
     }
   }else{
-    if(userNotAllowed.includes(location.pathname)){
+    if(isUserRole && userNotAllowed.includes(location.pathname)){
       return <Navigate to="/" />;
     }
   }
