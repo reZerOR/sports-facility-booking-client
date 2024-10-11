@@ -4,10 +4,11 @@ import {
   TFacility,
   useGetFacilitiesQuery,
 } from "@/redux/Features/facility/facilityApi";
-import Heading from "@/components/ui/Heading";
 import FacilityFilter from "@/components/ui/FacilityFilter";
 import FacilityPagination from "@/components/ui/FacilityPagination";
-export default function Facility() {
+import AddFacility from "@/components/Facility/AddFacility";
+
+export default function AllFacility() {
   const { data: facilitiesData } = useGetFacilitiesQuery();
   const [facilities, setFacilities] = useState<TFacility[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -47,7 +48,12 @@ export default function Facility() {
   return (
     <div className="bg-orange-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <Heading text="Our Facilities" />
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold text-orange-800">
+            Facility Management
+          </h1>
+          <AddFacility />
+        </div>
         <FacilityFilter
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}

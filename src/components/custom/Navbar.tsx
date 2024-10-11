@@ -15,6 +15,10 @@ const menu = [
     name: "About",
     to: "/about",
   },
+  {
+    name: "Contact Us",
+    to: "/contact",
+  },
 ];
 
 const Navbar = () => {

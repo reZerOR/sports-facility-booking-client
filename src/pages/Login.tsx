@@ -35,10 +35,10 @@ const loginSchema = z.object({
     .string()
     .min(1, { message: "Password is required to secure your sports profile" })
     .min(8, { message: "Password must be at least 8 characters long" })
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/, {
-      message:
-        "Password must contain at least one uppercase letter, one lowercase letter, and one number",
-    }),
+    // .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/, {
+    //   message:
+    //     "Password must contain at least one uppercase letter, one lowercase letter, and one number",
+    // }),
 });
 
 const registerSchema = loginSchema.extend({
@@ -60,7 +60,7 @@ const registerSchema = loginSchema.extend({
 
 type LoginFormInputs = z.infer<typeof loginSchema>;
 type RegisterFormInputs = z.infer<typeof registerSchema>;
-interface ApiResponse {
+export interface ApiResponse {
   status: number;
   data: {
     message: string;
@@ -100,6 +100,7 @@ export default function Component() {
         toast.success(result.message, {
           description: "You can now login to your account",
         });
+        setIsLogin(true);
       } else {
         toast.error(result.message);
       }

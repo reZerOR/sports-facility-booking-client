@@ -34,12 +34,6 @@ export function ComprehensiveFooter() {
                 About
               </Link>
               <Link
-                to="/services"
-                className="hover:text-orange-600 transition-colors"
-              >
-                Services
-              </Link>
-              <Link
                 to="/contact"
                 className="hover:text-orange-600 transition-colors"
               >

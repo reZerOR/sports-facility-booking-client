@@ -8,30 +8,30 @@ export interface FacilityRequestBody {
   location: string;
 }
 
-export interface Facility extends FacilityRequestBody {
+export interface TFacility extends FacilityRequestBody {
   _id: string;
   isDeleted: boolean;
 }
 
 
 interface GetFacilitiesResponse extends CommonResponse {
-  data: Facility[];
+  data: TFacility[];
 }
 
 interface GetFacilityByIdResponse extends CommonResponse {
-  data: Facility;
+  data: TFacility;
 }
 
 interface CreateFacilityResponse extends CommonResponse {
-  data: Facility;
+  data: TFacility;
 }
 
 interface UpdateFacilityResponse extends CommonResponse {
-  data: Facility;
+  data: TFacility;
 }
 
 interface DeleteFacilityResponse extends CommonResponse {
-  data: Facility;
+  data: TFacility;
 }
 
 const facilityApi = baseApi.injectEndpoints({
@@ -40,6 +40,7 @@ const facilityApi = baseApi.injectEndpoints({
       query: () => ({
         url: "/facility",
         method: "GET",
+        // mode: "no-cors",
       }),
       providesTags: ["Facility"],
     }),
@@ -47,6 +48,7 @@ const facilityApi = baseApi.injectEndpoints({
       query: (id) => ({
         url: `/facility/${id}`,
         method: "GET",
+        // mode: "no-cors",
       }),
     }),
     createFacility: build.mutation<CreateFacilityResponse, FacilityRequestBody>({

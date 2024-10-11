@@ -1,26 +1,44 @@
 import { useState, Dispatch, SetStateAction } from "react";
 import { motion } from "framer-motion";
-import { ChevronsRight, Home, LucideIcon, CalendarCheck } from "lucide-react";
+import {
+  ChevronsRight,
+  Home,
+  LucideIcon,
+  CalendarCheck,
+  LayoutList,
+  UserCog,
+} from "lucide-react";
 import logo from "@/assets/playpalsolo.svg";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { useCurrentUser } from "@/redux/Features/auth/authSlice";
+import { useAppSelector } from "@/redux/hooks";
 
 export const DashboardLayout = () => {
   return (
-    <div className="flex bg-indigo-50">
+    <div className="flex bg-primary1/5">
       <Sidebar />
       <ExampleContent />
     </div>
   );
 };
+const userNavs = [
+  { Icon: Home, title: "Dashboard", path: "/dashboard" },
+  { Icon: CalendarCheck, title: "My Bookings", path: "/dashboard/bookings" },
+];
+
+const adminNavs = [
+  { Icon: Home, title: "Dashboard", path: "/dashboard" },
+  { Icon: CalendarCheck, title: "Bookings", path: "/dashboard/bookings" },
+  { Icon: LayoutList, title: "Facilities", path: "/dashboard/facilities" },
+  { Icon: UserCog, title: "Add Admin", path: "/dashboard/add-admin" },
+];
 
 const Sidebar = () => {
+  const user = useAppSelector(useCurrentUser);
   const location = useLocation();
   const [open, setOpen] = useState(true);
   const selected = location.pathname;
-  const userOptions = [
-    { Icon: Home, title: "Dashboard", path: "/dashboard" },
-    { Icon: CalendarCheck, title: "My Bookings", path: "/dashboard/bookings" },
-  ];
+  const userOptions = user?.role === "user" ? userNavs : adminNavs;
   return (
     <motion.nav
       layout
@@ -60,48 +78,50 @@ interface OptionProps {
 
 const Option = ({ Icon, title, path, selected, open, notifs }: OptionProps) => {
   return (
-    <motion.button
-      layout
-      // onClick={}
-      className={`relative flex h-10 w-full items-center rounded-md transition-colors ${
-        selected === path
-          ? "bg-primary1/10 text-primary1"
-          : "text-slate-500 hover:bg-slate-100"
-      }`}
-    >
-      <motion.div
+    <Link to={path}>
+      <motion.button
         layout
-        className="grid h-full w-10 place-content-center text-lg"
+        // onClick={}
+        className={`relative flex h-10 w-full items-center rounded-md transition-colors ${
+          selected === path
+            ? "bg-primary1/10 text-primary1"
+            : "text-slate-500 hover:bg-slate-100"
+        }`}
       >
-        <Icon />
-      </motion.div>
-      {open && (
-        <motion.span
+        <motion.div
           layout
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.125 }}
-          className="text-xs font-medium"
+          className="grid h-full w-10 place-content-center text-lg"
         >
-          {title}
-        </motion.span>
-      )}
+          <Icon />
+        </motion.div>
+        {open && (
+          <motion.span
+            layout
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.125 }}
+            className="text-xs font-medium"
+          >
+            {title}
+          </motion.span>
+        )}
 
-      {notifs && open && (
-        <motion.span
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{
-            opacity: 1,
-            scale: 1,
-          }}
-          style={{ y: "-50%" }}
-          transition={{ delay: 0.5 }}
-          className="absolute right-2 top-1/2 size-4 rounded bg-indigo-500 text-xs text-white"
-        >
-          {notifs}
-        </motion.span>
-      )}
-    </motion.button>
+        {notifs && open && (
+          <motion.span
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+            style={{ y: "-50%" }}
+            transition={{ delay: 0.5 }}
+            className="absolute right-2 top-1/2 size-4 rounded bg-indigo-500 text-xs text-white"
+          >
+            {notifs}
+          </motion.span>
+        )}
+      </motion.button>
+    </Link>
   );
 };
 
@@ -181,7 +201,7 @@ const ToggleClose = ({ open, setOpen }: ToggleCloseProps) => {
 };
 
 const ExampleContent = () => (
-  <div className="h-[200vh] w-full">
+  <div className="w-full">
     <Outlet />
   </div>
 );
