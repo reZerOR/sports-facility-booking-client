@@ -12,7 +12,7 @@ import {
   TBooking,
   useGetBookingQuery,
 } from "@/redux/Features/booking/bookingApi";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 export default function Success() {
@@ -114,15 +114,19 @@ export default function Success() {
             </div>
           </CardContent>
           <CardFooter className="flex justify-center space-x-4">
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-              View My Bookings
-            </Button>
-            <Button
-              variant="outline"
-              className="border-orange-500 text-orange-500 hover:bg-orange-100"
-            >
-              Back to Home
-            </Button>
+            <Link to={"/dashboard/bookings"}>
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                View My Bookings
+              </Button>
+            </Link>
+            <Link to={'/'}>
+              <Button
+                variant="outline"
+                className="border-orange-500 text-orange-500 hover:bg-orange-100"
+              >
+                Back to Home
+              </Button>
+            </Link>
           </CardFooter>
         </Card>
       </div>

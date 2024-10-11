@@ -64,7 +64,7 @@ export default function FacilityBookingPage() {
       const formattedDate = new Date(date).toLocaleDateString("en-CA");
       try {
         const response = await fetch(
-          `http://localhost:5000/api/check-availability?facilityId=${bookings?._id}&date=${formattedDate}`
+          `https://sports-facility-v1.vercel.app/api/check-availability?facilityId=${bookings?._id}&date=${formattedDate}`
         );
         const data: CheckAvailabilityResponse = await response.json();
         if (data.success) {
