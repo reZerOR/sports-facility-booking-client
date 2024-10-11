@@ -10,7 +10,7 @@ interface ProtectRoutesProps {
 const ProtectRoutes = ({ children }: ProtectRoutesProps) => {
   const user = useAppSelector(useCurrentUser);
   const location = useLocation();
-  console.log("Current Route:", location.pathname);
+  // console.log("Current Route:", location.pathname);
   const userNotAllowed = ["/login", '/dashboard/add-admin', '/dashboard/facilities'];
   const isUserRole = user?.role === 'user'
 

@@ -32,7 +32,7 @@ const AddFacility = () => {
 
   const [createFacility] = useCreateFacilityMutation();
   const onSubmit: SubmitHandler<FacilityFormInputs> = async (data) => {
-    console.log(data);
+    // console.log(data);
     try {
       const result = await createFacility(data).unwrap();
       if (result.success) {

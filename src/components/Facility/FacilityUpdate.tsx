@@ -49,9 +49,6 @@ const FacilityUpdate = ({
       console.error(error);
       toast.error("Something went wrong", { description: "try again later" });
     }
-    console.log(_id);
-
-    console.log(data);
   };
   return (
     <DialogContent className="sm:max-w-[425px] rounded-2xl">

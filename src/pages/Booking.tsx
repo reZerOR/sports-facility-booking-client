@@ -84,9 +84,9 @@ export default function FacilityBookingPage() {
     }
   };
 
-  console.log(availableTimeSlots);
+  // console.log(availableTimeSlots);
   const handleTimeSlotChange = (timeSlot: string) => {
-    console.log(timeSlot);
+    // console.log(timeSlot);
     setSelectedTimeSlot(timeSlot);
   };
 

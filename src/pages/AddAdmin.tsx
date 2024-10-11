@@ -46,7 +46,7 @@ export default function Component() {
       ...data,
       role: "admin",
     } as SignupRequestBody;
-    console.log(signupData);
+    // console.log(signupData);
     try {
       const result = await signup(signupData).unwrap();
       if (result.success) {

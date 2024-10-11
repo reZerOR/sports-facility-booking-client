@@ -25,7 +25,7 @@ const Navbar = () => {
   const user = useAppSelector(useCurrentUser);
   const dispatch = useAppDispatch();
 
-  console.log(user);
+  // console.log(user);
   const navlinks = menu.map((item, idx) => (
     <NavLink
       key={idx}

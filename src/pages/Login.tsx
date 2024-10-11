@@ -92,7 +92,7 @@ export default function Component() {
       ...data,
       role: "user",
     } as SignupRequestBody;
-    console.log(signupData);
+    // console.log(signupData);
     try {
       const result = await signup(signupData).unwrap();
       if (result.success) {
@@ -115,7 +115,7 @@ export default function Component() {
     const loginData = {
       ...data,
     } as LoginRequestBody;
-      console.log(loginData);
+      // console.log(loginData);
     try {
       const result = await login(loginData).unwrap();
       if (result.success) {

@@ -72,7 +72,7 @@ const BookingsListCard = ({ bookings }: { bookings: TBooking[] }) => {
   const isAdmin = user?.role === "admin";
 
   const handleDelete = async (id: string) => {
-    console.log(`Deleting booking with id: ${id}`);
+    // console.log(`Deleting booking with id: ${id}`);
     try {
       const result = await cancelBooking(id).unwrap();
       if (result.success) {
