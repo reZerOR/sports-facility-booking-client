@@ -18,6 +18,8 @@ import {
   AlertDialogTrigger,
 } from "./alert-dialog";
 import { toast } from "sonner";
+import { Dialog, DialogTrigger } from "./dialog";
+import FacilityUpdate from "../Facility/FacilityUpdate";
 const DeleteConfirmation = ({
   handleDelete,
   id,
@@ -52,7 +54,18 @@ export default function FacilityCard({
   pricePerHour,
   description,
   location,
+  isDeleted
 }: TFacility) {
+
+  const facility = {
+    image,
+    pricePerHour,
+    description,
+    location,
+    _id,
+    name,
+    isDeleted
+  };
   const pathLoacation = useLocation();
   const isAdminFacilityRoute = pathLoacation.pathname.startsWith(
     "/dashboard/facilities"
@@ -99,12 +112,15 @@ export default function FacilityCard({
       <div className="p-4">
         {isAdminFacilityRoute ? (
           <div className="flex flex-row gap-2">
-            <Button
-              className="w-full bg-orange-500 hover:bg-orange-600 text-white"
-            >
-              <Edit className="w-4 h-4 mr-2" />
-              Edit
-            </Button>
+            <Dialog>
+              <DialogTrigger className="w-full">
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
+                  <Edit className="w-4 h-4 mr-2" />
+                  Edit
+                </Button>
+              </DialogTrigger>
+              <FacilityUpdate {...facility}/>
+            </Dialog>
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button className="w-full bg-red-500 hover:bg-red-600 text-white">
