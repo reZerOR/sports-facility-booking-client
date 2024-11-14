@@ -51,21 +51,6 @@ cd sports-facility-booking-client
 ```bash
 npm install
 ```
-
-## Usage
-
-1. Start the backend server
-```bash
-cd backend
-npm run dev
-```
-
-2. Start the frontend development server
-```bash
-cd frontend
-npm start
-```
-
 3. Access the application at `http://localhost:5173`
 
 ## Core Pages
