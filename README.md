@@ -1,50 +1,84 @@
-# React + TypeScript + Vite
+# Sports Facility Booking Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive platform for booking sports facilities with user and admin dashboards.
 
-Currently, two official plugins are available:
+## Project Description
+A full-stack web application that enables users to browse, book, and manage sports facility reservations. Features separate interfaces for users and administrators, secure payment processing, and real-time availability checking.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+### User Features
+- Facility browsing and searching
+- Real-time availability checking
+- Secure booking system with SSL Commerz/AmarPay integration
+- Personal dashboard for booking management
+- Social media login integration (optional)
 
-## Expanding the ESLint configuration
+### Admin Features
+- Facility management (CRUD operations)
+- Booking oversight
+- Admin account creation
+- Image upload integration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technology Stack
+### Frontend
+- React.js
+- Tailwind CSS
+- React Router
+- Redux
+- ShadcnUI
 
-- Configure the top-level `parserOptions` property like this:
+### Backend
+- Node.js/Express.js
+- MongoDB
+- JWT Authentication
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Installation Guidelines
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm/yarn
+
+### Installation Steps
+#### For server installation
+check this repo: https://github.com/reZerOR/sport-facility-server-v2
+1. Clone the repository
+```bash
+git clone [repository-url]
+cd sports-facility-booking-client
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Install dependencies
+```bash
+npm install
 ```
+
+## Usage
+
+1. Start the backend server
+```bash
+cd backend
+npm run dev
+```
+
+2. Start the frontend development server
+```bash
+cd frontend
+npm start
+```
+
+3. Access the application at `http://localhost:5173`
+
+## Core Pages
+- Landing Page with facility showcase
+- User/Admin Dashboards
+- Facility Listing/Details
+- Booking System
+- Authentication Pages
+- About/Contact Pages
+
+## Additional Features
+- Responsive design
+- Custom error pages
+- Scroll to top functionality
+- Pagination
+- Toast notifications for error handling

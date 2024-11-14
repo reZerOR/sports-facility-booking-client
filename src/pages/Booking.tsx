@@ -58,13 +58,15 @@ export default function FacilityBookingPage() {
   const { bookings } = useAppSelector((state) => state.booking);
   const [createBooking] = useCreateBookingMutation();
   const user = useAppSelector(useCurrentUser)
+  console.log(availableTimeSlots);
+  
 
   const handleCheckAvailability = async () => {
     if (date) {
       const formattedDate = new Date(date).toLocaleDateString("en-CA");
       try {
         const response = await fetch(
-          `https://sports-facility-v1.vercel.app/api/check-availability?facilityId=${bookings?._id}&date=${formattedDate}`
+          `https://sports-facility-server-v2.vercel.app/api/check-availability?facilityId=${bookings?._id}&date=${formattedDate}`
         );
         const data: CheckAvailabilityResponse = await response.json();
         if (data.success) {

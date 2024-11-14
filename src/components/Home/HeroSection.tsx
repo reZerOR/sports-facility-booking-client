@@ -2,8 +2,10 @@ import { FadeText } from "@/components/ui/FadeText";
 import { motion } from "framer-motion";
 import { Calendar, CalendarDays, MapPin } from "lucide-react";
 import { Button } from "../ui/button";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate()
   const fadeInAnimation = (delay: number) => ({
     initial: { opacity: 0, y: 100 },
     animate: { opacity: 1, y: 0 },
@@ -72,7 +74,7 @@ const HeroSection = () => {
           <motion.div {...fadeInAnimation(3)}>
             <Button
               className="bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white font-bold ~/xl:~py-4/6 ~/xl:~px-6 mt-6 rounded-full transition-all duration-200 ease-in-out ~/xl:~text-sm/lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
-              onClick={() => {}}
+              onClick={() => {navigate('/facility')}}
             >
               <CalendarDays
                 className="~/xl:~size-5/6 mr-2"

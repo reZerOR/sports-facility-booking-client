@@ -3,7 +3,7 @@ import { RootState } from "../../store";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://sports-facility-v1.vercel.app/api",
+    baseUrl: "https://sports-facility-server-v2.vercel.app/api",
     // baseUrl: "http://localhost:5000/api",
     credentials: "include",
     prepareHeaders: (headers, { getState }) => {
